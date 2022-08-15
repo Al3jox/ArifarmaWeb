@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Arifarma.Models.DetalleCompraMedicaman>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodCompraMedicamentosNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodProductoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodCompraMedicamentosNavigation.CodCompraMedicamentos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodProductoNavigation.CodProducto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CodDetalleCompraMedicamentos">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CodDetalleCompraMedicamentos">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodDetalleCompraMedicamentos">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
